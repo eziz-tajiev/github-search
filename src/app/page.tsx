@@ -9,6 +9,13 @@ export default function Home() {
           <p className="text-xl font-semibold">Github Search</p>
           <DarkLightBtn />
         </section>
+
+        {/* search and main */}
+        <section>
+          {/* search and btn */}
+          <main></main>
+        </section>
+
       </div>
     </div>
   );

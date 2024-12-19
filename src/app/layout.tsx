@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
 import "./globals.css";
-import LayoutContainer from "@/components/LayoutContainer";
+import LayoutContainer from "@/app/LayoutContainer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",

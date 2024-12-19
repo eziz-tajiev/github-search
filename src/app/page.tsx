@@ -1,5 +1,5 @@
 import DarkLightBtn from "@/components/DarkLIghtBtn";
-import Image from "next/image";
+import SearchBtn from "@/components/SearchBtn";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
         {/* search and main */}
         <section>
           {/* search and btn */}
+          <SearchBtn />
           <main></main>
         </section>
 

@@ -3,6 +3,10 @@ import SearchBtn from "@/components/SearchBtn";
 import Image from "next/image";
 import userImg from './favicon.ico'
 import Link from "next/link";
+import { IoLocationOutline } from "react-icons/io5";
+import { IoIosLink } from "react-icons/io";
+import { FaTwitter } from "react-icons/fa";
+import { BsFillBuildingFill } from "react-icons/bs";
 
 export default function Home() {
   return (
@@ -59,6 +63,34 @@ export default function Home() {
                   <p className="text-xs opacity-60">Following</p>
                   <p className="text-sm font-bold sm:text-base">12</p>
                 </div>
+              </div>
+              {/* adress and extra links */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {/* item 1 */}
+                <div className="flex items-center gap-2">
+                  {/* icon */}
+                  <IoLocationOutline className="text-xl" />
+                  <p>New York</p>
+                </div>
+                  {/* item 2 */}
+                  <div className="flex items-center gap-2">
+                  {/* icon */}
+                  <IoIosLink className="text-xl" />
+                  <p>New York</p>
+                </div>
+                  {/* item 3 */}
+                  <div className="flex items-center gap-2">
+                  {/* icon */}
+                  <FaTwitter className="text-xl" />
+                  <p>New York</p>
+                </div>
+                  {/* item 4 */}
+                  <div className="flex items-center gap-2">
+                  {/* icon */}
+                  <BsFillBuildingFill className="text-xl" />
+                  <p>New York</p>
+                </div>
+
               </div>
             </section>
           </main>

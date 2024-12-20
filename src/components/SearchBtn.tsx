@@ -5,7 +5,6 @@ type Props = {
     value: string;
     onChange: React.ChangeEventHandler<HTMLInputElement>;
     onSubmit: React.FormEventHandler<HTMLFormElement>;
-    
 }
 
 
@@ -14,7 +13,7 @@ export default function SearchBtn(props: Props) {
         <form
          onSubmit={props.onSubmit}
          className="flex items-center gap-2 shadow-md focus-within:ring-2 dark:focus-within:ring-gray-200
-         focus-within:ring-slate-800 p-2 rounded-lg dark:bg-slate-800 bg-white  mx-2">
+         focus-within:ring-slate-800 p-2 rounded-lg dark:bg-slate-800 bg-white">
             <section className="flex items-center h-full gap-2 w-full"> 
                 {/* search icon */}
                 <IoSearch className="text-2xl text-blue-500" />

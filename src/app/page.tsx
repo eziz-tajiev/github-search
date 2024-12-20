@@ -2,6 +2,7 @@ import DarkLightBtn from "@/components/DarkLIghtBtn";
 import SearchBtn from "@/components/SearchBtn";
 import Image from "next/image";
 import userImg from './favicon.ico'
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,7 +30,9 @@ export default function Home() {
               <section>
                 <div>
                   {/* name */}
+                  <h1>Tony</h1>
                   {/* user id */}
+                  <Link className="text-blue-400 hover:underline text-sm transition-all" href={'#'}>@franchesco</Link>
                 </div>
                 {/* joined date */}
               </section>

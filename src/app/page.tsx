@@ -18,7 +18,7 @@ export default function Home() {
           {/* search and btn */}
           <SearchBtn />
           <main className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 px-4 py-8 min-h-[200px]">
-            <section>
+            <section className="flex gap-4">
               {/* user image */}
               <Image
                 width={200}
@@ -27,7 +27,7 @@ export default function Home() {
                 src={userImg}
                 alt="user-img"/>
 
-              <section>
+              <section className="flex flex-col justify-between gap-1 transition-all sm:w-full sm:flex-row">
                 <div>
                   {/* name */}
                   <h1>Tony</h1>
@@ -35,6 +35,7 @@ export default function Home() {
                   <Link className="text-blue-400 hover:underline text-sm transition-all" href={'#'}>@franchesco</Link>
                 </div>
                 {/* joined date */}
+                <p className="">Joinded 1 Jan 2025</p>
               </section>
             </section>
           </main>

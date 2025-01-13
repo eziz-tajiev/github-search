@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import LayoutContainer from "@/app/LayoutContainer";
+import { Header } from "@/components/Header";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -33,7 +34,12 @@ export default function RootLayout({
     <html lang="en">
         <body className={space.className}>
           <LayoutContainer>
-            {children}
+            <div className="min-h-screen w-full bg-stone-100 p-1.5 sm:p-4 pt-10 sm:pt-12 dark:bg-slate-900">
+              <div className="mx-auto w-full max-w-[600px]">
+                <Header />
+                {children}
+              </div>
+            </div>
           </LayoutContainer>
         </body>
     </html>

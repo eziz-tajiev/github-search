@@ -31,9 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <LayoutContainer>
-        <body className={space.className}> {children} </body>
-      </LayoutContainer>
+        <body className={space.className}>
+          <LayoutContainer>
+            {children}
+          </LayoutContainer>
+        </body>
     </html>
   );
 }

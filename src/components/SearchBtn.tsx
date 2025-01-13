@@ -6,8 +6,6 @@ type Props = {
     onChange: React.ChangeEventHandler<HTMLInputElement>;
     onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
-
-
 export default function SearchBtn(props: Props) {
     return (
         <form

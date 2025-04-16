@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { IoLocationOutline } from "react-icons/io5";
@@ -44,14 +43,15 @@ export function Card() {
 
   return (
     <motion.div
+      initial={false}
       animate={{ height: opened ? 341 : 112 }}
       transition={{ duration: 0.3 }}
       className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 p-4 overflow-hidden"
     >
       <button className="flex gap-4" onClick={() => setOpened(!opened)}>
         <Image
-          width={200}
-          height={200}
+          width={80}
+          height={80}
           className="h-20 w-20 rounded-full"
           src={"/file.svg"}
           alt="user-img"

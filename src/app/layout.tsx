@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import LayoutContainer from "@/app/LayoutContainer";
@@ -6,17 +5,6 @@ import { Header } from "@/components/Header";
 import { cookieGet } from "@/utils/cookie";
 import { Theme } from "@/utils/types";
 import clsx from "clsx";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
 const space = localFont({
   src: "../../public/fonts/SpaceMono.ttf",
   variable: "--font-space-mono",

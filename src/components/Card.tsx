@@ -10,9 +10,10 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
+import avatar from "../../public/avatarG.png";
 
 const fetchGithubProfile = async () => {
-  const res = await fetch("https://api.github.com/users/Amigo");
+  const res = await fetch("https://api.github.com/users/Tony");
   if (!res.ok) throw new Error("Failed to fetch");
   return res.json();
 };
@@ -49,7 +50,7 @@ export function Card() {
           width={80}
           height={80}
           className="h-20 w-20 rounded-full"
-          src={data.avatar_url}
+          src={avatar}
           alt="user-img"
         />
 

@@ -22,7 +22,7 @@ export default function SearchBtn(props: Props) {
           value={props.value}
           onChange={props.onChange}
           placeholder="Search Github username..."
-          className="w-full h-[40px] rounded bg-inherit outline-none px-1 text-sm"
+          className="w-full h-[40px] rounded bg-inherit outline-none px-1 text-sm dark:text-white"
           type="text"
         />
       </section>

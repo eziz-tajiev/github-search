@@ -8,7 +8,7 @@ import { BsFillBuildingFill } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
 import { useState } from "react";
 import { motion } from "motion/react";
-import { FaRegHeart } from "react-icons/fa6";
+import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchGithubProfile = async () => {
@@ -19,6 +19,7 @@ const fetchGithubProfile = async () => {
 
 export function Card() {
   const [opened, setOpened] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["githubUser"],
@@ -42,13 +43,8 @@ export function Card() {
   ];
 
   return (
-    <motion.div
-      initial={false}
-      animate={{ height: opened ? 341 : 112 }}
-      transition={{ duration: 0.3 }}
-      className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 p-4 overflow-hidden"
-    >
-      <button className="flex gap-4" onClick={() => setOpened(!opened)}>
+    <div className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 p-4 overflow-hidden">
+      <div className="flex gap-4">
         <Image
           width={80}
           height={80}
@@ -68,32 +64,51 @@ export function Card() {
               @{data.login}
             </Link>
           </div>
-          <div className="flex gap-3">
-            <FaRegHeart />
-            <SlArrowDown />
+          <div className="flex gap-7 items-center">
+            <button onClick={() => setLiked(!liked)}>
+              <motion.div whileTap={{ scale: 0.9 }}>
+                {liked ? <FaHeart size={23} /> : <FaRegHeart size={23} />}
+              </motion.div>
+            </button>
+            <button onClick={() => setOpened(!opened)}>
+              <motion.div
+                animate={{ rotate: opened ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <SlArrowDown size={23} />
+              </motion.div>
+            </button>
           </div>
         </section>
-        <div></div>
-      </button>
-      <section className="flex flex-col gap-5">
-        <p>{data.bio}</p>
-        <div className="flex justify-between gap-3 rounded-lg bg-stone-100 px-6 py-4 dark:bg-slate-900 min-h-[50px]">
-          {stats.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2">
-              <p className="text-xs opacity-60">{item.label}</p>
-              <p className="text-sm font-bold sm:text-base">{item.value}</p>
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {infoItems.map((info, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <info.icon className="text-xl" />
-              <p>{info.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </motion.div>
+      </div>
+      <motion.div
+        initial={false}
+        animate={{ height: opened ? "auto" : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <section className="flex flex-col gap-5 mt-3">
+          <p>{data.bio}</p>
+          <div className="flex justify-between gap-3 rounded-lg bg-stone-100 px-6 py-4 dark:bg-slate-900 min-h-[50px]">
+            {stats.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col items-center gap-2"
+              >
+                <p className="text-xs opacity-60">{item.label}</p>
+                <p className="text-sm font-bold sm:text-base">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {infoItems.map((info, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <info.icon className="text-xl" />
+                <p>{info.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </motion.div>
+    </div>
   );
 }

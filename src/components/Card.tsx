@@ -12,7 +12,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchGithubProfile = async () => {
-  const res = await fetch("https://api.github.com/users/Tony");
+  const res = await fetch("https://api.github.com/users/Amigo");
   if (!res.ok) throw new Error("Failed to fetch");
   return res.json();
 };
@@ -25,9 +25,9 @@ export function Card() {
     queryKey: ["githubUser"],
     queryFn: fetchGithubProfile,
   });
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Failed to load Github data</p>;
+  if (isLoading)
+    return <p className="dark:text-white text-center pt-7">Loading...</p>;
+  if (error) return <p className="text-red-600">Failed to load Github data</p>;
 
   const stats = [
     { label: "Repos", value: data.public_repos },
@@ -49,13 +49,13 @@ export function Card() {
           width={80}
           height={80}
           className="h-20 w-20 rounded-full"
-          src={"/file.svg"}
+          src={data.avatar_url}
           alt="user-img"
         />
 
-        <section className="flex justify-between gap-1 transition-all w-full">
+        <section className="flex justify-between gap-1 transition-all w-full dark:text-white">
           <div>
-            <h1>{data.name || data.login}</h1>
+            <h1 className="dark:text-white">{data.name || data.login}</h1>
             <Link
               className="text-blue-400 hover:underline text-sm transition-all"
               href={data.html_url}
@@ -86,7 +86,7 @@ export function Card() {
         animate={{ height: opened ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <section className="flex flex-col gap-5 mt-3">
+        <section className="flex flex-col gap-5 mt-3 dark:text-white">
           <p>{data.bio}</p>
           <div className="flex justify-between gap-3 rounded-lg bg-stone-100 px-6 py-4 dark:bg-slate-900 min-h-[50px]">
             {stats.map((item) => (
@@ -103,7 +103,7 @@ export function Card() {
             {infoItems.map((info, index) => (
               <div key={index} className="flex items-center gap-2">
                 <info.icon className="text-xl" />
-                <p>{info.text}</p>
+                <p>{info.text || "N/A"}</p>
               </div>
             ))}
           </div>

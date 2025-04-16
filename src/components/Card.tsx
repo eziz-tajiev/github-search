@@ -86,8 +86,8 @@ export function Card() {
           ))}
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {infoItems.map((info, infoIndex) => (
-            <div className="flex items-center gap-2">
+          {infoItems.map((info, index) => (
+            <div key={index} className="flex items-center gap-2">
               <info.icon className="text-xl" />
               <p>{info.text}</p>
             </div>

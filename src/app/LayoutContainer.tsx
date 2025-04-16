@@ -1,22 +1,14 @@
 "use client";
-import { ThemeProvider } from "next-themes";
-
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
-export default function LayoutContainer({
-  children,
-}: {
+interface Props {
   children: React.ReactNode;
-}) {
+}
+
+export default function LayoutContainer({ children }: Props) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }

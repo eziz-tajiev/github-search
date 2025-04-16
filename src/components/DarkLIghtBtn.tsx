@@ -1,37 +1,32 @@
 "use client";
-
-import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { LuMoonStar } from "react-icons/lu";
 
 export default function DarkLightBtn() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setMounted(true);
-    }
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  function toggleDark() {
-    if (resolvedTheme === "light") {
+  function handleThemeChange() {
+    if (theme === "light") {
+      document.body.classList.add("dark");
       setTheme("dark");
     } else {
+      document.body.classList.remove("dark");
       setTheme("light");
     }
   }
+
   return (
-    <div className="flex items-center gap-2">
-      <p>{resolvedTheme === "light" ? "DARK" : "LIGHT"}</p>
-      <button onClick={toggleDark} className="text-2xl">
-        {resolvedTheme === "light" ? <LuMoonStar /> : <IoSunnyOutline />}
-      </button>
-    </div>
+    <button
+      onClick={handleThemeChange}
+      className="flex items-center gap-2 dark:text-white"
+    >
+      <p className="uppercase">{theme}</p>
+      {theme === "light" ? (
+        <LuMoonStar className="text-2xl" />
+      ) : (
+        <IoSunnyOutline className="text-2xl" />
+      )}
+    </button>
   );
 }

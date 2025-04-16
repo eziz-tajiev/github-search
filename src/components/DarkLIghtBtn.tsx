@@ -1,17 +1,25 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { cookieSet } from "@/utils/cookie";
+import { Theme } from "@/utils/types";
+import React, { useState } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { LuMoonStar } from "react-icons/lu";
 
-export default function DarkLightBtn() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+interface Props {
+  currentTheme: Theme;
+}
 
-  function handleThemeChange() {
+export default function DarkLightBtn({ currentTheme }: Props) {
+  const [theme, setTheme] = useState<Theme>(currentTheme);
+
+  async function handleThemeChange() {
     if (theme === "light") {
       document.body.classList.add("dark");
+      cookieSet("theme", "dark");
       setTheme("dark");
     } else {
       document.body.classList.remove("dark");
+      cookieSet("theme", "light");
       setTheme("light");
     }
   }

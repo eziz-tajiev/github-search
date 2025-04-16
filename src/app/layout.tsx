@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import LayoutContainer from "@/app/LayoutContainer";
 import { Header } from "@/components/Header";
@@ -17,10 +17,14 @@ import clsx from "clsx";
 //   subsets: ["latin"],
 // });
 
-const space = Space_Mono({
+const space = localFont({
+  src: "../../public/fonts/SpaceMono.ttf",
   variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+});
+
+const geist = localFont({
+  src: "../../public/fonts/GeistMono.ttf",
+  variable: "--font-geist-mono",
 });
 
 export default async function RootLayout({
@@ -32,7 +36,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={clsx(space.className, theme)}>
+      <body className={clsx(space.className, geist.className, theme)}>
         <LayoutContainer>
           <div className="min-h-screen w-full bg-stone-100 p-1.5 sm:p-4 pt-10 sm:pt-12 dark:bg-slate-900">
             <div className="mx-auto w-full max-w-[600px]">

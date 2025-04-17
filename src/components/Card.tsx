@@ -22,7 +22,7 @@ export function Card({ userName }: { userName: string }) {
   const [opened, setOpened] = useState(false);
   const [liked, setLiked] = useState(false);
 
-  const { data, isLoading, error, refetch } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["githubUser", userName],
     queryFn: () => fetchGithubProfile(userName),
   });

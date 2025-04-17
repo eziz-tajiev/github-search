@@ -12,19 +12,19 @@ import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import avatar from "../../public/avatarG.png";
 
-const fetchGithubProfile = async () => {
-  const res = await fetch("https://api.github.com/users/Tony");
+const fetchGithubProfile = async (userName: string) => {
+  const res = await fetch(`https://api.github.com/users/${userName}`);
   if (!res.ok) throw new Error("Failed to fetch");
   return res.json();
 };
 
-export function Card() {
+export function Card({ userName }: { userName: string }) {
   const [opened, setOpened] = useState(false);
   const [liked, setLiked] = useState(false);
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["githubUser"],
-    queryFn: fetchGithubProfile,
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["githubUser", userName],
+    queryFn: () => fetchGithubProfile(userName),
   });
   if (isLoading)
     return <p className="dark:text-white text-center pt-7">Loading...</p>;
